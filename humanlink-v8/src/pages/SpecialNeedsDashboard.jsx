@@ -13,6 +13,7 @@ import { initials } from '../utils';
 
 // استدعاء تبويب الـ Overview الذي أنشأناه (تأكد من المسار حسب ما سميت المجلد عندك)
 import OverviewTab from '../components/specialDashboardTabs/OverviewTab';
+import RequestsTab from '../components/specialDashboardTabs/RequestsTab';
 
 const NAVY = '#153147';
 
@@ -189,9 +190,7 @@ export default function SpecialNeedsDashboard() {
             
             {/* استدعاء الـ Overview الذي أنشأناه للتو */}
             {activeTab === 'overview' && <OverviewTab key="overview" setTab={setTab} isDark={isDark} cardBg={cardBg} subText={subText} />}
-            
-            {/* التبويبات القادمة التي سنبرمجها (حالياً نضع رسالة مؤقتة) */}
-            {activeTab === 'requests' && <div key="requests">My Requests coming soon...</div>}
+            {activeTab === 'requests' && <RequestsTab key="requests" isDark={isDark} cardBg={cardBg} subText={subText} />}
             {activeTab === 'cases' && <div key="cases">My Cases coming soon...</div>}
             {activeTab === 'support' && <div key="support">Support coming soon...</div>}
 
