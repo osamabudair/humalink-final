@@ -13,6 +13,8 @@ import Profile       from './pages/Profile';
 import OrgDashboard  from './pages/OrgDashboard';
 import OrgSettings   from './pages/OrgSettings';
 
+import SpecialNeedsDashboard from './pages/SpecialNeedsDashboard';
+
 
 export default function App() {
   return (
@@ -32,6 +34,7 @@ export default function App() {
         <Route path="/org-dashboard" element={<OrgDashboard />}  />
         <Route path="*"              element={<Navigate to="/" replace />} />
         <Route path="/settings"       element={<OrgSettings />}     />
+        <Route path="/special-needs-dashboard" element={<SpecialNeedsDashboard />} />
         
       </Routes>
     </BrowserRouter>

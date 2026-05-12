@@ -2,18 +2,15 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
-// 1. استيراد الأيقونات الأساسية فقط (لا نحتاج لأيقونات التبويبات هنا)
 import {
   LayoutDashboard, ClipboardList, FolderOpen, Users, BarChart3,
   Settings, Sun, Moon, LogOut, Bell, CheckCheck
 } from 'lucide-react';
-
 import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
 import { useLang } from '../context/LangContext';
 import { initials } from '../utils';
 
-// 2. استيراد التبويبات المستقلة التي أنشأناها
 import OverviewTab from '../components/orgDashboardTabs/OverviewTab';
 import RequestsTab from '../components/orgDashboardTabs/RequestsTab';
 import CasesTab from '../components/orgDashboardTabs/CasesTab';
