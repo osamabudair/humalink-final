@@ -58,7 +58,9 @@ export default function SpecialNeedsDashboard() {
 
   // نظام إشعارات بسيط
   const [notifications, setNotifications] = useState([
-    { id: 1, text: 'Your request REQ-108 is pending review.', type: 'Status Update', isRead: false },
+    { id: 1, text: 'Your request REQ-108 has been updated to Pending.', type: 'Request Update', isRead: false },
+    { id: 2, text: 'A volunteer has been assigned to your case CASE-305.', type: 'Case Update', isRead: false },
+    { id: 3, text: 'Your financial support request was approved.', type: 'Request Update', isRead: true },
   ]);
   const unreadCount = notifications.filter(n => !n.isRead).length;
   const markAllAsRead = () => setNotifications(notifications.map(n => ({ ...n, isRead: true })));
@@ -150,26 +152,49 @@ export default function SpecialNeedsDashboard() {
           <div className="flex items-center gap-2">
             
             {/* Notifications */}
+            {/* Notifications */}
             <div className="relative">
               <button onClick={() => setNotif(!notifOpen)} className={`relative w-9 h-9 rounded-xl flex items-center justify-center transition-all ${iconBtn}`}>
                 <Bell size={17} />
                 {unreadCount > 0 && <span className="absolute top-1.5 right-1.5 w-2.5 h-2.5 rounded-full border-2 border-white dark:border-[#1e293b] flex items-center justify-center" style={{ background: '#ef4444' }}></span>}
               </button>
+              
               <AnimatePresence>
                 {notifOpen && (
                   <motion.div initial={{ opacity: 0, y: -8, scale: 0.95 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: -8 }} className={`absolute top-full mt-2 right-0 w-80 border rounded-2xl p-3 shadow-xl z-50 ${isDark ? 'bg-[#1e293b] border-slate-700' : 'bg-white border-[#EDEAE4]'}`}>
+                    
+                    {/* الهيدر وزر Mark as read */}
                     <div className="flex items-center justify-between mb-3 px-1">
                       <p className={`text-xs font-semibold uppercase ${subText}`}>Notifications</p>
-                      <button onClick={markAllAsRead} className="text-[11px] font-semibold text-blue-500 hover:underline flex items-center gap-1"><CheckCheck size={14} /> Mark read</button>
+                      {unreadCount > 0 && (
+                        <button onClick={markAllAsRead} className="text-[11px] font-semibold text-blue-500 hover:underline flex items-center gap-1">
+                          <CheckCheck size={14} /> Mark all as read
+                        </button>
+                      )}
                     </div>
-                    <div className="space-y-1">
+                    
+                    {/* قائمة الإشعارات المنسدلة */}
+                    <div className="space-y-1 max-h-80 overflow-y-auto pr-1">
                       {notifications.map((n) => (
                         <div key={n.id} className={`flex items-start gap-3 p-2.5 rounded-xl transition-colors ${n.isRead ? '' : isDark ? 'bg-blue-500/10' : 'bg-blue-50'} ${hoverBg}`}>
                           <div className={`w-2 h-2 rounded-full mt-1.5 flex-shrink-0 ${n.isRead ? 'bg-slate-300 dark:bg-slate-600' : 'bg-blue-500'}`} />
-                          <p className={`text-sm leading-tight ${n.isRead ? (isDark ? 'text-slate-400' : 'text-slate-600') : (isDark ? 'text-white' : 'font-semibold text-slate-800')}`}>{n.text}</p>
+                          
+                          <div className="flex-1">
+                            <p className={`text-sm leading-tight ${isDark ? 'text-slate-200' : 'text-slate-800'} ${n.isRead ? '' : 'font-semibold'}`}>
+                              {n.text}
+                            </p>
+                            {/* تصنيف الإشعار: Request أو Case مع أيقونة صغيرة */}
+                            <span className={`text-[10px] font-bold uppercase mt-1.5 flex items-center gap-1 ${
+                              n.type === 'Request Update' ? 'text-blue-500' : 'text-emerald-500'
+                            }`}>
+                              {n.type === 'Request Update' ? <ClipboardList size={10} /> : <FolderOpen size={10} />}
+                              {n.type}
+                            </span>
+                          </div>
                         </div>
                       ))}
                     </div>
+
                   </motion.div>
                 )}
               </AnimatePresence>
