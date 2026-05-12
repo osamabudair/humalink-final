@@ -14,6 +14,7 @@ import { initials } from '../utils';
 // استدعاء تبويب الـ Overview الذي أنشأناه (تأكد من المسار حسب ما سميت المجلد عندك)
 import OverviewTab from '../components/specialDashboardTabs/OverviewTab';
 import RequestsTab from '../components/specialDashboardTabs/RequestsTab';
+import CasesTab from '../components/specialDashboardTabs/CasesTab';
 
 const NAVY = '#153147';
 
@@ -191,7 +192,7 @@ export default function SpecialNeedsDashboard() {
             {/* استدعاء الـ Overview الذي أنشأناه للتو */}
             {activeTab === 'overview' && <OverviewTab key="overview" setTab={setTab} isDark={isDark} cardBg={cardBg} subText={subText} />}
             {activeTab === 'requests' && <RequestsTab key="requests" isDark={isDark} cardBg={cardBg} subText={subText} />}
-            {activeTab === 'cases' && <div key="cases">My Cases coming soon...</div>}
+            {activeTab === 'cases' && <CasesTab key="cases" isDark={isDark} cardBg={cardBg} subText={subText} />}
             {activeTab === 'support' && <div key="support">Support coming soon...</div>}
 
           </AnimatePresence>
