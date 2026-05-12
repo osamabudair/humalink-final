@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ═══════════════════════════════════════════════════
+   DESIGN SYSTEM — Navy / Ivory / Almond / Mist palette
+   Ivory   #F9F8F7  |  Almond #EDEAE4  |  Mist #ADB8BB
+   Navy    #153147  |  Noir   #232A2F
+   ═══════════════════════════════════════════════════ */
+
+:root {
+  --bg-primary:     #F9F8F7;
+  --bg-secondary:   #ffffff;
+  --bg-tertiary:    #EDEAE4;
+  --bg-card:        #ffffff;
+  --border:         #EDEAE4;
+  --border-hover:   #ADB8BB;
+  --text-primary:   #232A2F;
+  --text-secondary: #6b7280;
+  --text-muted:     #9ca3af;
+  --navy:           #153147;
+  --shadow-sm:      0 1px 3px rgba(21,49,71,0.06), 0 1px 2px rgba(21,49,71,0.04);
+  --shadow:         0 4px 16px rgba(21,49,71,0.08);
+  --shadow-lg:      0 8px 32px rgba(21,49,71,0.10);
+}
+
+.dark {
+  --bg-primary:     #0f172a;
+  --bg-secondary:   #1e293b;
+  --bg-tertiary:    #1e293b;
+  --bg-card:        #1e293b;
+  --border:         rgba(100,116,139,0.4);
+  --border-hover:   rgba(100,116,139,0.7);
+  --text-primary:   #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted:     #64748b;
+  --navy:           #153147;
+  --shadow-sm:      0 1px 3px rgba(0,0,0,0.3);
+  --shadow:         0 4px 16px rgba(0,0,0,0.25);
+  --shadow-lg:      0 8px 32px rgba(0,0,0,0.4);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:focus-visible {
+  outline: 2px solid #153147;
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--border-hover); }
+
+/* Utilities */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.card:hover { border-color: var(--border-hover); }
+
+.gradient-text {
+  background: linear-gradient(135deg, #153147 0%, #2a5a80 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+.animate-blink { animation: blink 1s step-end infinite; }
