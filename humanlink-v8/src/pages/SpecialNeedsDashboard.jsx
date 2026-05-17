@@ -16,6 +16,7 @@ import OverviewTab from '../components/specialDashboardTabs/OverviewTab';
 import RequestsTab from '../components/specialDashboardTabs/RequestsTab';
 import CasesTab from '../components/specialDashboardTabs/CasesTab';
 import SupportTab from '../components/specialDashboardTabs/SupportTab';
+import SettingsTab from '../components/specialDashboardTabs/SettingsTab';
 
 const NAVY = '#153147';
 
@@ -29,7 +30,7 @@ export default function SpecialNeedsDashboard() {
   const [sidebarOpen, setSidebar]   = useState(false);
   const [notifOpen, setNotif]       = useState(false);
 
-  const userName = user?.name || 'Guest User';
+  const userName = user?.name || 'Guest';
 
   // القائمة الجانبية المخصصة للمستفيدين (Special Needs)
   const NAV = [
@@ -88,7 +89,7 @@ export default function SpecialNeedsDashboard() {
             </div>
             <div className="flex-1 min-w-0">
               <p className={`text-sm font-semibold truncate ${isDark ? 'text-white' : 'text-[#232A2F]'}`}>{userName}</p>
-              <p className={`text-xs truncate ${subText}`}>{user?.role || 'Beneficiary'}</p>
+              <p className={`text-xs truncate ${subText}`}>{user?.role || 'Special Needs'}</p>
             </div>
           </div>
         </div>
@@ -151,8 +152,6 @@ export default function SpecialNeedsDashboard() {
           </div>
 
           <div className="flex items-center gap-2">
-            
-            {/* Notifications */}
             {/* Notifications */}
             <div className="relative">
               <button onClick={() => setNotif(!notifOpen)} className={`relative w-9 h-9 rounded-xl flex items-center justify-center transition-all ${iconBtn}`}>
@@ -220,6 +219,7 @@ export default function SpecialNeedsDashboard() {
             {activeTab === 'requests' && <RequestsTab key="requests" isDark={isDark} cardBg={cardBg} subText={subText} />}
             {activeTab === 'cases' && <CasesTab key="cases" isDark={isDark} cardBg={cardBg} subText={subText} />}
             {activeTab === 'support' && <SupportTab key="support" isDark={isDark} cardBg={cardBg} subText={subText} />}
+            {activeTab === 'settings' && <SettingsTab key="settings" isDark={isDark} cardBg={cardBg} subText={subText} />}
 
           </AnimatePresence>
         </div>
