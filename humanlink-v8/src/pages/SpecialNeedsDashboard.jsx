@@ -15,6 +15,7 @@ import { initials } from '../utils';
 import OverviewTab from '../components/specialDashboardTabs/OverviewTab';
 import RequestsTab from '../components/specialDashboardTabs/RequestsTab';
 import CasesTab from '../components/specialDashboardTabs/CasesTab';
+import SupportTab from '../components/specialDashboardTabs/SupportTab';
 
 const NAVY = '#153147';
 
@@ -218,7 +219,7 @@ export default function SpecialNeedsDashboard() {
             {activeTab === 'overview' && <OverviewTab key="overview" setTab={setTab} isDark={isDark} cardBg={cardBg} subText={subText} />}
             {activeTab === 'requests' && <RequestsTab key="requests" isDark={isDark} cardBg={cardBg} subText={subText} />}
             {activeTab === 'cases' && <CasesTab key="cases" isDark={isDark} cardBg={cardBg} subText={subText} />}
-            {activeTab === 'support' && <div key="support">Support coming soon...</div>}
+            {activeTab === 'support' && <SupportTab key="support" isDark={isDark} cardBg={cardBg} subText={subText} />}
 
           </AnimatePresence>
         </div>
